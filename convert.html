@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Convert</title>
+<style type="text/css">
+    .editor {
+		float: left;
+		width: 50%;
+    }
+    .controls {
+		text-align: center;
+		clear: both;
+    }
+    textarea{
+    	border-color:#DBDBDB;
+    	resize: none;
+    }
+    #content {
+    	display: table;
+		margin: auto;
+		margin-top: 70px;
+    }
+	#image {
+		display: table;
+    	margin: auto;
+    	margin-top: 25px;
+	}
+</style>
+
+<script type="text/javascript"> 
+  
+	function strlenFix(str) {
+		while (str.length<4) str="0"+str;
+		return str;
+	}
+  
+	function convert() {
+		var result = '';
+		var source = document.forms["conversion"].elements["input"].value;     
+		for (i=0; i<source.length; i++) {
+			charCode = source.charCodeAt(i);
+			if (charCode <= 127) {
+				result += source.charAt(i);
+			} else {
+				result += '\\u' + strlenFix(charCode.toString(16).toUpperCase());
+			}
+		}
+		document.forms["conversion"].elements["output"].value=result;
+	}
+
+</script>
+</head>
+
+<body>
+	<div id="page">
+		<div id="content">
+			<form name="conversion" >
+				<div class="editor">
+					<textarea name="input" cols="80" rows="40" onkeyup="convert()"></textarea>
+				</div>
+				<div class="editor">
+					<textarea name="output" cols="80" rows="40" readonly></textarea>
+				</div>
+			</form>
+		</div>
+		<div id="image">
+			<img src="st_sm.jpg" alt="ST" />
+		</div>
+	</div>
+</body>
+</html>
