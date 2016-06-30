@@ -1,162 +1,54 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>SORT_IMPORT</title>
-<link rel="stylesheet" href="animate.min.css">
-
-<link href='https://fonts.googleapis.com/css?family=Yantramanav:400,100,300' rel='stylesheet' type='text/css'>
-
-<style type="text/css">
-	.title {
-    	font-family: 'Yantramanav', serif;
-    	font-weight: 100;
-    	font-size: 48px;
-    	color: #004C66;
-    	margin-left: 13px;
-	}
-	.version {
-		font-family: 'Yantramanav', serif;
-    	font-weight: 100;
-    	font-size: 18px;
-    	color: #004C66;
-	}
-    .editor {
-		float: left;
-		width: 50%;
-		padding-top: 0px;
-    }
-    .controls {
-		text-align: center;
-		clear: both;
-    }
-    .stImage {
-    	float: left;
-    	margin-top: 6px;
-    }
-    textarea{
-    	border-color:#BFBFBF;
-    	resize: none;
-    }
-    #content {
-    	display: table;
-		margin: auto;
-		margin-top: 20px;
-    }
-	.version-wrapper {
-		display: table;
-    	margin: auto;
-    	margin-top: 25px;
-	}
-</style>
-
-<script type="text/javascript"> 
-  
-	function convert() {
-		var result = '';
-
-		var objects = createLineObjects();
-
-		objects.sort(compare);
-
-		var variableDeclarationsStarted = false;
-
-
-		for(i=0; i<objects.length; ++i){
-			
-			if(objects[i].priority == 0 && !variableDeclarationsStarted) {
-
-				variableDeclarationsStarted = true;
-				result += '<% \n';
-			}
-
-			result += objects[i].content + '\n';
-
-			if(i < objects.length - 1 && objects[i].priority != objects[i+1].priority) {
-
-				result += '\n';
-			}
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>SORT_IMPORT</title>
+	<link rel="stylesheet" href="animate.min.css">
+	
+	<link href='https://fonts.googleapis.com/css?family=Yantramanav:400,100,300' rel='stylesheet' type='text/css'>
+	
+	<style type="text/css">
+		.title {
+		    	font-family: 'Yantramanav', serif;
+		    	font-weight: 100;
+		    	font-size: 48px;
+		    	color: #004C66;
+		    	margin-left: 13px;
 		}
-
-		if(variableDeclarationsStarted) {
-			result += '%>';
+		.version {
+			font-family: 'Yantramanav', serif;
+		    	font-weight: 100;
+		    	font-size: 18px;
+		    	color: #004C66;
 		}
-		
-		
-		document.forms["conversion"].elements["output"].value=result;
-	}
-
-	function compare(zambo,jimmy){
-
-		if(zambo.priority < jimmy.priority) {
-			return 1;
-		} else if(zambo.priority > jimmy.priority) {
-			return -1;
-		} else {
-			return zambo.content > jimmy.content;
+		.editor {
+			float: left;
+			width: 50%;
+			padding-top: 0px;
 		}
-	}
-
-	function createLineObjects() {
-
-		var array = createArrayFromInput();
-
-		var lineObjects = [];
-
-		for(i=0; i<array.length; ++i){
-			var priority = 0;
-
-			var line = array[i];
-
-			if(line.indexOf('include') > -1) {
-				priority = 100;
-			} else if(line.indexOf('java.') > -1){
-				priority = 90;
-			} else if(line.indexOf('com.liferay.portal') > -1){
-				priority = 80;
-			} else if(line.indexOf('com.liferay.portlet') > -1){
-				priority = 70;
-			} else if(line.indexOf('hu.webtown') > -1){
-				priority = 60;
-			} 
-
-			lineObjects.push({content: line, priority: priority});
+		.controls {
+			text-align: center;
+			clear: both;
 		}
-
-		return lineObjects;8
-	}
-
-	function createArrayFromInput() {
-		var source = document.forms["conversion"].elements["input"].value; 
-
-		var linesCount = (source.match(/\n/g)||[]).length + 1;
-
-		var linesArray = [];
-
-		var line = '';
-
-		for (i=0; i<source.length; i++) {
-
-			character = source.charAt(i);
-
-			if(character != '\n'){
-				line += source.charAt(i);
-			}
-
-			if(character == '\n' || i == source.length-1){
-
-				if(line.length != 0 && !(line == '<%') && !(line == '%>')){
-					linesArray.push(line);
-				}
-				
-				line = '';
-			}
+		.stImage {
+			float: left;
+			margin-top: 6px;
 		}
-
-		return linesArray;
-	}
-
-</script>
+		textarea{
+			border-color:#BFBFBF;
+			resize: none;
+		}
+		#content {
+			display: table;
+			margin: auto;
+			margin-top: 20px;
+		}
+		.version-wrapper {
+			display: table;
+			margin: auto;
+			margin-top: 25px;
+		}
+	</style>
 </head>
 
 <body>
@@ -190,6 +82,113 @@
 			</span>
 		</div>
 	</div>
+	<script type="text/javascript"> 
+  
+		function convert() {
+			var result = '';
+	
+			var objects = createLineObjects();
+	
+			objects.sort(compare);
+	
+			var variableDeclarationsStarted = false;
+	
+	
+			for(i=0; i<objects.length; ++i){
+				
+				if(objects[i].priority == 0 && !variableDeclarationsStarted) {
+	
+					variableDeclarationsStarted = true;
+					result += '<% \n';
+				}
+	
+				result += objects[i].content + '\n';
+	
+				if(i < objects.length - 1 && objects[i].priority != objects[i+1].priority) {
+	
+					result += '\n';
+				}
+			}
+	
+			if(variableDeclarationsStarted) {
+				result += '%>';
+			}
+			
+			
+			document.forms["conversion"].elements["output"].value=result;
+		}
+	
+		function compare(zambo,jimmy){
+	
+			if(zambo.priority < jimmy.priority) {
+				return 1;
+			} else if(zambo.priority > jimmy.priority) {
+				return -1;
+			} else {
+				return zambo.content > jimmy.content;
+			}
+		}
+	
+		function createLineObjects() {
+	
+			var array = createArrayFromInput();
+	
+			var lineObjects = [];
+	
+			for(i=0; i<array.length; ++i){
+				var priority = 0;
+	
+				var line = array[i];
+	
+				if(line.indexOf('include') > -1) {
+					priority = 100;
+				} else if(line.indexOf('java.') > -1){
+					priority = 90;
+				} else if(line.indexOf('com.liferay.portal') > -1){
+					priority = 80;
+				} else if(line.indexOf('com.liferay.portlet') > -1){
+					priority = 70;
+				} else if(line.indexOf('hu.webtown') > -1){
+					priority = 60;
+				} 
+	
+				lineObjects.push({content: line, priority: priority});
+			}
+	
+			return lineObjects;8
+		}
+	
+		function createArrayFromInput() {
+			var source = document.forms["conversion"].elements["input"].value; 
+	
+			var linesCount = (source.match(/\n/g)||[]).length + 1;
+	
+			var linesArray = [];
+	
+			var line = '';
+	
+			for (i=0; i<source.length; i++) {
+	
+				character = source.charAt(i);
+	
+				if(character != '\n'){
+					line += source.charAt(i);
+				}
+	
+				if(character == '\n' || i == source.length-1){
+	
+					if(line.length != 0 && !(line == '<%') && !(line == '%>')){
+						linesArray.push(line);
+					}
+					
+					line = '';
+				}
+			}
+	
+			return linesArray;
+		}
+	
+	</script>
 </body>
 
 </html>
