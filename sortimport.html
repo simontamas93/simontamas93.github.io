@@ -88,7 +88,7 @@
 			var result = '';
 	
 			var objects = createLineObjects();
-	
+
 			objects.sort(compare);
 	
 			var variableDeclarationsStarted = false;
@@ -125,7 +125,16 @@
 			} else if(zambo.priority > jimmy.priority) {
 				return -1;
 			} else {
-				return zambo.content > jimmy.content;
+
+				var javaCode = zambo.priority == jimmy.priority && zambo.priority == 0;
+
+				if(!javaCode && zambo.content < jimmy.content) {
+					return -1;
+				} else if(!javaCode && zambo.content > jimmy.content) {
+					return 1;
+				} else {
+					return 0;
+				}
 			}
 		}
 	
