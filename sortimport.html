@@ -163,6 +163,8 @@
 					priority = 100;
 				} else if(line.indexOf('java.') > -1){
 					priority = 90;
+				} else if(line.indexOf('javax.') > -1){
+					priority = 85;
 				} else if(line.indexOf('com.liferay.portal') > -1){
 					priority = 80;
 				} else if(line.indexOf('com.liferay.portlet') > -1){
