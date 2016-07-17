@@ -1,179 +1,194 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Konvertáló</title>
-<link rel="stylesheet" href="animate.min.css">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Konvertáló</title>
+	
+	<link rel="stylesheet" href="animate.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
-<style type="text/css">
-    .editor {
-		float: left;
-		width: 50%;
-    }
-    .controls {
-		text-align: center;
-		clear: both;
-    }
-    textarea{
-    	border-color:#DBDBDB;
-    	resize: none;
-    }
-    #content {
-    	display: table;
-		margin: auto;
-		margin-top: 70px;
-    }
-	#image {
-		display: table;
-    	margin: auto;
-    	margin-top: 25px;
-	}
-</style>
-
-<script type="text/javascript"> 
-  
-	function strlenFix(str) {
-		while (str.length<4) str="0"+str;
-		return str;
-	}
-  
-	function convert() {
-		var result = '';
-		var source = document.forms["conversion"].elements["input"].value;     
-		for (i=0; i<source.length; i++) {
-			character = source.charAt(i);
-			characterB = source.charAt(i + 1);
-			characterC = source.charAt(i + 2);
-
-			if(character == 'd' && characterB == 'z' && characterC == 's'){
-				result += 'c';
-				result += 's';
-				++i;
-				++i;
-			} else if(character == 'c' && characterB == 's'){
-				result += 'd';
-				result += 'z';
-				result += 's';
-				++i;
-			} else if(character == 's' && characterB == 'z'){
-				result += 'z';
-				++i;
-			} else if (character == 'z' && characterB == 's'){
-				result += 's';
-				++i;
-			} else if (character == 'd' && characterB == 'z'){
-				result += 'c';
-				++i;
-			} else if (character == 'g' && characterB == 'y'){
-				result += 't';
-				result += 'y';
-				++i;
-			} else if (character == 't' && characterB == 'y'){
-				result += 'g';
-				result += 'y';
-				++i;
-			} else if (character == 'b') {
-				result += 'p';
-			} else if (character == 'p'){
-				result += 'b';
-			} else if (character == 'd'){
-				result += 't';
-			} else if (character == 't'){
-				result += 'd';
-			} else if (character == 'g'){
-				result += 'k';
-			} else if (character == 'k'){
-				result += 'g';
-			} else if (character == 'v'){
-				result += 'f';
-			} else if (character == 'f'){
-				result += 'v';
-			} else if (character == 'z'){
-				result += 'sz';
-			} else if (character == 'p'){
-				result += 'b';
-			} else if (character == 'z'){
-				result += 's';
-				result += 'z';
-			} else if (character == 's'){
-				result += 'z';
-				result += 's';
-			} else if (character == 'c'){
-				result += 'd';
-				result += 'z';
-			} else if(character == 'D' && characterB == 'z' && characterC == 's'){
-				result += 'C';
-				result += 's';
-				++i;
-				++i;
-			} else if(character == 'C' && characterB == 's'){
-				result += 'D';
-				result += 'z';
-				result += 's';
-				++i;
-			} else if(character == 'S' && characterB == 'z'){
-				result += 'Z';
-				++i;
-			} else if (character == 'Z' && characterB == 's'){
-				result += 'S';
-				++i;
-			} else if (character == 'D' && characterB == 'z'){
-				result += 'C';
-				++i;
-			} else if (character == 'G' && characterB == 'y'){
-				result += 'T';
-				result += 'y';
-				++i;
-			} else if (character == 'T' && characterB == 'y'){
-				result += 'G';
-				result += 'y';
-				++i;
-			} else if (character == 'B') {
-				result += 'P';
-			} else if (character == 'P'){
-				result += 'B';
-			} else if (character == 'D'){
-				result += 'T';
-			} else if (character == 'T'){
-				result += 'D';
-			} else if (character == 'G'){
-				result += 'K';
-			} else if (character == 'K'){
-				result += 'G';
-			} else if (character == 'V'){
-				result += 'F';
-			} else if (character == 'F'){
-				result += 'V';
-			} else if (character == 'Z'){
-				result += 'S';
-				result += 'z';
-			} else if (character == 'P'){
-				result += 'B';
-			} else if (character == 'Z'){
-				result += 'S';
-				result += 'z';
-			} else if (character == 'S'){
-				result += 'Z';
-				result += 's';
-			} else if (character == 'C'){
-				result += 'D';
-				result += 'z';
-			} 
-
-
-			else {
-				result += character;
-			}
+	<style type="text/css">
+		.editor {
+			float: left;
+			width: 50%;
 		}
-		document.forms["conversion"].elements["output"].value=result;
-	}
+		.controls {
+			text-align: center;
+			clear: both;
+		}
+		textarea{
+			border-color:#DBDBDB;
+			resize: none;
+		}
+		#content {
+			display: table;
+			margin: auto;
+			margin-top: 10px;
+		}
+		#image {
+			display: table;
+			margin: auto;
+			margin-top: 25px;
+		}
+	</style>
 
-</script>
+	<script type="text/javascript"> 
+	  
+		function strlenFix(str) {
+			while (str.length<4) str="0"+str;
+			return str;
+		}
+	  
+		function convert() {
+			var result = '';
+			var source = document.forms["conversion"].elements["input"].value;     
+			for (i=0; i<source.length; i++) {
+				character = source.charAt(i);
+				characterB = source.charAt(i + 1);
+				characterC = source.charAt(i + 2);
+
+				if(character == 'd' && characterB == 'z' && characterC == 's'){
+					result += 'c';
+					result += 's';
+					++i;
+					++i;
+				} else if(character == 'c' && characterB == 's'){
+					result += 'd';
+					result += 'z';
+					result += 's';
+					++i;
+				} else if(character == 's' && characterB == 'z'){
+					result += 'z';
+					++i;
+				} else if (character == 'z' && characterB == 's'){
+					result += 's';
+					++i;
+				} else if (character == 'd' && characterB == 'z'){
+					result += 'c';
+					++i;
+				} else if (character == 'g' && characterB == 'y'){
+					result += 't';
+					result += 'y';
+					++i;
+				} else if (character == 't' && characterB == 'y'){
+					result += 'g';
+					result += 'y';
+					++i;
+				} else if (character == 'b') {
+					result += 'p';
+				} else if (character == 'p'){
+					result += 'b';
+				} else if (character == 'd'){
+					result += 't';
+				} else if (character == 't'){
+					result += 'd';
+				} else if (character == 'g'){
+					result += 'k';
+				} else if (character == 'k'){
+					result += 'g';
+				} else if (character == 'v'){
+					result += 'f';
+				} else if (character == 'f'){
+					result += 'v';
+				} else if (character == 'z'){
+					result += 'sz';
+				} else if (character == 'p'){
+					result += 'b';
+				} else if (character == 'z'){
+					result += 's';
+					result += 'z';
+				} else if (character == 's'){
+					result += 'z';
+					result += 's';
+				} else if (character == 'c'){
+					result += 'd';
+					result += 'z';
+				} else if(character == 'D' && characterB == 'z' && characterC == 's'){
+					result += 'C';
+					result += 's';
+					++i;
+					++i;
+				} else if(character == 'C' && characterB == 's'){
+					result += 'D';
+					result += 'z';
+					result += 's';
+					++i;
+				} else if(character == 'S' && characterB == 'z'){
+					result += 'Z';
+					++i;
+				} else if (character == 'Z' && characterB == 's'){
+					result += 'S';
+					++i;
+				} else if (character == 'D' && characterB == 'z'){
+					result += 'C';
+					++i;
+				} else if (character == 'G' && characterB == 'y'){
+					result += 'T';
+					result += 'y';
+					++i;
+				} else if (character == 'T' && characterB == 'y'){
+					result += 'G';
+					result += 'y';
+					++i;
+				} else if (character == 'B') {
+					result += 'P';
+				} else if (character == 'P'){
+					result += 'B';
+				} else if (character == 'D'){
+					result += 'T';
+				} else if (character == 'T'){
+					result += 'D';
+				} else if (character == 'G'){
+					result += 'K';
+				} else if (character == 'K'){
+					result += 'G';
+				} else if (character == 'V'){
+					result += 'F';
+				} else if (character == 'F'){
+					result += 'V';
+				} else if (character == 'Z'){
+					result += 'S';
+					result += 'z';
+				} else if (character == 'P'){
+					result += 'B';
+				} else if (character == 'Z'){
+					result += 'S';
+					result += 'z';
+				} else if (character == 'S'){
+					result += 'Z';
+					result += 's';
+				} else if (character == 'C'){
+					result += 'D';
+					result += 'z';
+				} 
+
+
+				else {
+					result += character;
+				}
+			}
+			document.forms["conversion"].elements["output"].value=result;
+		}
+
+	</script>
 </head>
 
 <body>
+
 	<div id="page">
 		<div id="content">
+		
+			<nav class="navbar navbar-default">
+				<div class="container">
+					<ul class="nav navbar-nav">
+						<li><a href="index.html">Kezdőoldal</a></li>
+						<li><a href="convert.html">Convert</a></li>
+						<li><a href="sortimport.html">sortImport</a></li>
+						<li class="active"><a href="zongeszongetlen.html">Konvertáló</a></li>
+					</ul>
+				</div>
+			</nav>
+			
 			<form name="conversion" >
 				<div class="editor">
 					<textarea name="input" cols="80" rows="40" onkeyup="convert()"></textarea>
