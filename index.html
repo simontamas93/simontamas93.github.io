@@ -5,8 +5,11 @@
 	
 	<title>ST</title>
 	
+	
 	<link rel="stylesheet" href="animate.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<link rel="stylesheet" href="navigation_bar.css">
+	<link href='https://fonts.googleapis.com/css?family=Yantramanav:400,100,300' rel='stylesheet' type='text/css'>
 
 	<style type="text/css">
 		#image {
@@ -21,19 +24,48 @@
 		}
 		body {
 			overflow-y: scroll;
+			
 		}
+		html { 
+			background: url(bg.png) no-repeat center center fixed; 
+			-webkit-background-size: cover;
+			-moz-background-size: cover;
+			-o-background-size: cover;
+			background-size: cover;
+		}
+		.title-wrapper {
+			font-family: 'Yantramanav', serif;
+			
+			color: #fff;
+			margin: auto;
+			position: absolute;
+			width: 100%;
+			text-align: center;
+			display: inline-block;
+			margin-top: 250px;
+		}
+		.title {
+			font-weight: 100;
+			font-size: 88px;
+		}
+		.subtitle {
+			font-weight: 300;
+			font-size: 34px;
+		}
+		
 	</style>
+
 </head>
 
 <body>
 
-
 	<div id="page">
 	
 		<div id="content">
-			<nav class="navbar navbar-default">
+			<nav class="navbar navbar-default navbar-fixed-top">
 				<div class="container">
 					<ul class="nav navbar-nav">
+						<a href="#" class="navbar-left"><img class="icon" src="stlogo_50_black.png"></a>
 						<li class="active"><a href="index.html">Kezdőoldal</a></li>
 						<li><a href="convert.html">Convert</a></li>
 						<li><a href="sortimport.html">sortImport</a></li>
@@ -43,9 +75,15 @@
 			</nav>
 		</div>
 		
-		<div id="image">
-			<img class="animated fadeInUp" src="stlogo.png" alt="ST" />
+		<div class="title-wrapper">
+			<span class="title">
+				<div>simontamas93</div>
+			</span>	
+			<span class="subtitle">
+				<div>.github.io</div>	
+			</span>		
 		</div>
+		
 	</div>
 
 </body>

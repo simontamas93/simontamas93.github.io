@@ -6,6 +6,7 @@
 	
 	<link rel="stylesheet" href="animate.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<link rel="stylesheet" href="navigation_bar.css">
 
 	<style type="text/css">
 		.editor {
@@ -29,6 +30,9 @@
 			display: table;
 			margin: auto;
 			margin-top: 25px;
+		}
+		body {
+			padding-top: 70px;
 		}
 	</style>
 
@@ -178,9 +182,10 @@
 	<div id="page">
 		<div id="content">
 		
-			<nav class="navbar navbar-default">
+			<nav class="navbar navbar-default navbar-fixed-top">
 				<div class="container">
 					<ul class="nav navbar-nav">
+						<a href="index.html" class="navbar-left"><img class="icon" src="stlogo_50_black.png"></a>
 						<li><a href="index.html">Kezdőoldal</a></li>
 						<li><a href="convert.html">Convert</a></li>
 						<li><a href="sortimport.html">sortImport</a></li>

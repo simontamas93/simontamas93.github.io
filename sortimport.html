@@ -7,6 +7,7 @@
 	<link rel="stylesheet" href="animate.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 	<link href='https://fonts.googleapis.com/css?family=Yantramanav:400,100,300' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="navigation_bar.css">
 	
 	<style type="text/css">
 		.title {
@@ -31,10 +32,6 @@
 			text-align: center;
 			clear: both;
 		}
-		.stImage {
-			float: left;
-			margin-top: 6px;
-		}
 		textarea{
 			border-color:#BFBFBF;
 			resize: none;
@@ -49,6 +46,9 @@
 			margin: auto;
 			margin-top: 25px;
 		}
+		body {
+			padding-top: 70px;
+		}
 	</style>
 </head>
 
@@ -57,9 +57,10 @@
 	<div id="page">
 		<div id="content">
 		
-			<nav class="navbar navbar-default">
+			<nav class="navbar navbar-default navbar-fixed-top">
 				<div class="container">
 					<ul class="nav navbar-nav">
+						<a href="index.html" class="navbar-left"><img class="icon" src="stlogo_50_black.png"></a>
 						<li><a href="index.html">Kezdőoldal</a></li>
 						<li><a href="convert.html">Convert</a></li>
 						<li class="active"><a href="sortimport.html">sortImport</a></li>
@@ -69,14 +70,9 @@
 			</nav>
 			
 			<div class="title-wrapper">
-				<img class="stImage" src="st_sm_b.png" alt="ST" />
-
-				<div class="animated fadeInDown">
-					<span class="title">
-						sortImport()
-					</span>
-				</div>
-				
+				<span class="title">
+					sortImport()
+				</span>				
 			</div>
 
 			<form name="conversion" >
